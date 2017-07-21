@@ -2,7 +2,9 @@ cmake_minimum_required(VERSION 3.4)
 
 project(bzip2 C)
 
-set(CMAKE_DEBUG_POSTFIX d)
+if(NOT DEFINED CMAKE_DEBUG_POSTFIX)
+  set(CMAKE_DEBUG_POSTFIX d)
+endif()
 set(CMAKE_POSITION_INDEPENDENT_CODE 1)
 
 set(LIB_SRCS
