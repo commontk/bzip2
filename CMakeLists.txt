@@ -19,13 +19,9 @@ add_library(libbz2
   ${LIB_SRCS}
   )
 
-if(MSVC)
+if(UNIX)
   target_compile_options(libbz2
-    PRIVATE -MD -Ox -nologo
-    )
-else()
-  target_compile_options(libbz2
-    PRIVATE -Wall -Winline -O2 -g
+    PRIVATE -Wall -Winline
     )
 endif()
 
