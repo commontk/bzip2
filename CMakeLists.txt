@@ -36,3 +36,25 @@ if(NOT MSVC)
   set_target_properties(libbz2 PROPERTIES PREFIX "")
 endif()
 
+# Install library
+if(NOT DEFINED BZIP2_INSTALL_BIN_DIR)
+  set(BZIP2_INSTALL_BIN_DIR "bin")
+endif()
+if(NOT DEFINED BZIP2_INSTALL_LIB_DIR)
+  set(BZIP2_INSTALL_LIB_DIR "lib")
+endif()
+install(TARGETS libbz2
+  RUNTIME DESTINATION ${BZIP2_INSTALL_BIN_DIR} COMPONENT RuntimeLibraries
+  LIBRARY DESTINATION ${BZIP2_INSTALL_LIB_DIR} COMPONENT RuntimeLibraries
+  ARCHIVE DESTINATION ${BZIP2_INSTALL_LIB_DIR} COMPONENT Development
+  )
+
+# Install header
+if(NOT BZIP2_INSTALL_INCLUDE_DIR)
+  set(BZIP2_INSTALL_INCLUDE_DIR include)
+endif()
+install(FILES
+  bzlib.h
+  DESTINATION ${BZIP2_INSTALL_INCLUDE_DIR} COMPONENT Development
+  )
+
